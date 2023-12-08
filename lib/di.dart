@@ -16,7 +16,9 @@ Future<void> init() async {
   );
 
   getIt.registerFactory(
-        () => SecondBloc( getCurrentNumberUseCase: getIt<GetCurrentNumberUseCase>(),),
+    () => SecondBloc(
+      getCurrentNumberUseCase: getIt<GetCurrentNumberUseCase>(),
+    ),
   );
 
   // Home Use cases
@@ -26,7 +28,7 @@ Future<void> init() async {
   getIt.registerLazySingleton(
       () => SubtractNumberUseCase(getIt<HomeRepository>()));
   getIt.registerLazySingleton(
-          () => GetCurrentNumberUseCase(getIt<HomeRepository>()));
+      () => GetCurrentNumberUseCase(getIt<HomeRepository>()));
 
   // Home repository
   getIt.registerLazySingleton<HomeRepository>(
@@ -36,9 +38,6 @@ Future<void> init() async {
   // Home remote data sources
   getIt.registerLazySingleton<HomeLocalDataSource>(
       () => HomeLocalDataSourceImpl());
-
-
-
 
   //Dio
   getIt.registerLazySingleton<DioClient>(() => getIt<DioClient>());
